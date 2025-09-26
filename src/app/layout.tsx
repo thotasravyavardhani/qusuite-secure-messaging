@@ -4,6 +4,8 @@ import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 import Link from "next/link";
+import NavAuth from "@/components/auth/NavAuth";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,15 +35,17 @@ export default function RootLayout({
         <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
             <Link href="/" className="text-sm font-medium">QuSuite</Link>
-            <div className="flex gap-4 text-sm">
+            <div className="flex items-center gap-4 text-sm">
               <Link href="/qsuite/architecture" className="text-muted-foreground hover:text-foreground">Architecture</Link>
               <Link href="/qsuite/flow" className="text-muted-foreground hover:text-foreground">Flow</Link>
               <Link href="/qsuite/messaging" className="text-muted-foreground hover:text-foreground">Messaging</Link>
+              <NavAuth />
             </div>
           </nav>
         </header>
         {children}
         <VisualEditsMessenger />
+        <Toaster richColors closeButton />
       </body>
     </html>
   );
